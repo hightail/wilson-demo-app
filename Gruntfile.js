@@ -1,38 +1,35 @@
 module.exports = function(grunt) {
+  // load all grunt tasks
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    concat: {
-      options: {
-        separator: ';'
-      },
-      dist: {
-        src: [
-          'lib/client/src/wilson.js',
-          'lib/client/src/**/*.js'
-        ],
-        dest: 'lib/client/client.wilson.js'
+    shell: {
+      installDependencies: {
+        command: [
+          'npm install',
+          'bower install'
+        ].join('&&'),
+        options: {
+          stdout: true
+        }
       }
     },
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      },
-      build: {
-        src: 'lib/client/client.wilson.js',
-        dest: 'lib/client/client.wilson.min.js'
+    express: {
+      default: {
+        options: {
+          port: process.env.PORT || 3000,
+          script: 'app/server/app.js',
+          background: false
+        }
       }
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-
-  grunt.registerTask('wilson-build', ['concat', 'uglify']);
+  grunt.registerTask('server', ['shell:installDependencies','express']);
 
   // Default task(s).
-  grunt.registerTask('default', ['wilson-build']);
+  grunt.registerTask('default', ['server']);
 
 };
