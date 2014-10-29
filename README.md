@@ -4,15 +4,20 @@ wilson-demo-app
 #Summary
 This is a simple application to demostrate the how to setup and run a Wilson app.
 
-#Install dependencies
+#Run the app
+There is a grunt "server" task to install dependencies and run the application.
+
 ```
-npm install; bower install
+grunt server
 ```
 
-#Run the app
+This is the default task so you can also just run:
+
 ```
-node app/server/app.js
+grunt
 ```
+
+See the Gruntfile.js for more info.
 
 #Understanding
 The server code is located in `app/server/app.js`
