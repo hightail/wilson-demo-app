@@ -36,8 +36,7 @@
       "account":      7,
       "language":     6,
       "locale":       5,
-      "pref-locale":  4,
-      "user":         11
+      "pref-locale":  4
     }
   }
 }
