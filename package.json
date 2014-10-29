@@ -18,7 +18,7 @@
     "xmldom": "^0.1.19",
     "winston": "^0.8.0",
     "underscore.string": "^2.3.3",
-    "wilson": "hightail/wilson"
+    "wilson": "hightail/wilson#develop"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

@@ -28,6 +28,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('server', ['shell:installDependencies','express']);
+  //grunt.registerTask('server', ['express']);
 
   // Default task(s).
   grunt.registerTask('default', ['server']);

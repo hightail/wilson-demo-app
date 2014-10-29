@@ -17,9 +17,8 @@
 
 angular.wilson.component('home', {
   page: true,
-  controller: ['ComponentFactoryService', '$scope', function(ComponentFactoryService, $scope) {
+  controller: ['$scope', function($scope) {
     var controller = this;
-    ComponentFactoryService.init('home', controller, $scope);
 
     $scope.message = $scope.translate('Welcome to the homepage');
 //  controller.setState({

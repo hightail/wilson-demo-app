@@ -17,9 +17,8 @@
 
 angular.wilson.component('subcomponent', {
   
-  controller: ['ComponentFactoryService', '$scope', '$attrs', '$location', function(ComponentFactoryService, $scope, $attrs, $location) {
+  controller: ['$scope', '$location', function($scope, $location) {
     var controller = this;
-    ComponentFactoryService.init('subcomponent', controller, $scope, $attrs);
 
 //  controller.setState({
 //    initial: '',

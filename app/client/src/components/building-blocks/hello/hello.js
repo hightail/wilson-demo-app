@@ -17,20 +17,25 @@
 
 angular.wilson.component('hello', {
   
-  controller: ['ComponentFactoryService', '$scope', '$attrs', function(ComponentFactoryService, $scope, $attrs) {
+  controller: ['$scope', function($scope) {
     var controller = this;
-    ComponentFactoryService.init('hello', controller, $scope, $attrs);
 
-//  controller.setState({
-//    initial: '',
-//    events: [
-//      { name: '',  from: '',  to: '' }
-//    ],
-//    timeouts: [],
-//    callbacks: {}
-//  });
+    controller.setState({
+      initial: 'Initial',
+      events: [
+        { name: 'next',  from: 'Initial',  to: 'Done' }
+      ],
+      timeouts: [
+        { state: 'Initial', duration: 1000, timeoutEvent: 'next' }
+      ],
+      callbacks: {
+        onenterDone: function() {
+          $scope.message = controller.translate("Initialization Complete");
+        }
+      }
+    });
 
-    $scope.message = controller.translate("Hello");
+    $scope.message = controller.translate("Initializing");
   }],
   
   link: function($scope, $element, $attrs, controller) {
